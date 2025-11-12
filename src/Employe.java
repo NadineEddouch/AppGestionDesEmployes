@@ -55,7 +55,6 @@ public class Employe implements Comparable<Employe> {
                 ", departement=" + nomDepartement + ", grade=" + grade + "}";
     }
 
-    // Tri naturel par id
     @Override
     public int compareTo(Employe e) {
         return Integer.compare(this.id, e.id);

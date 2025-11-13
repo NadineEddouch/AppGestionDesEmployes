@@ -54,7 +54,6 @@ public class Employe implements Comparable<Employe> {
         return "Employe {id=" + id + ", nom=" + nom + ", prenom=" + prenom +
                 ", departement=" + nomDepartement + ", grade=" + grade + "}";
     }
-
     @Override
     public int compareTo(Employe e) {
         return Integer.compare(this.id, e.id);

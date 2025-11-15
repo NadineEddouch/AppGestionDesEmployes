@@ -49,21 +49,24 @@ public class Employe implements Comparable<Employe> {
     public void setGrade(int grade) {
         this.grade = grade;
     }
+
     @Override
     public String toString() {
-        return "Employe {id=" + id + ", nom=" + nom + ", prenom=" + prenom +
-                ", departement=" + nomDepartement + ", grade=" + grade + "}";
+        return "Employe {id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", departement=" + nomDepartement + ", grade=" + grade + "}";
     }
     @Override
     public int compareTo(Employe e) {
         return Integer.compare(this.id, e.id);
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Employe e = (Employe) obj;
-        return id == e.id;
+        if (obj == null) return false;
+        if (obj.getClass() == Employe.class) {
+            Employe e = (Employe) obj;
+            return id == e.id;
+        }
+        return false;
     }
-
 }

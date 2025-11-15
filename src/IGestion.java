@@ -1,4 +1,3 @@
-import java.util.List;
 public interface IGestion<T> {
     void ajouterEmploye(T t);
     boolean rechercherEmploye(String nom);

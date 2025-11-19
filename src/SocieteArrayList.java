@@ -47,17 +47,23 @@ public class SocieteArrayList implements IGestion<Employe>, IRechercheAvancee<Em
 
     @Override
     public void trierEmployeParNomDepartementEtGrade() {
-        employes.sort(Comparator
-                .comparing(Employe::getNomDepartement)
-                .thenComparingInt(Employe::getGrade)
-                .thenComparing(Employe::getNom));
+        Collections.sort(employes, new Comparator<Employe>() {
+            @Override
+            public int compare(Employe e1, Employe e2) {
+                int cmp = e1.getNomDepartement().compareTo(e2.getNomDepartement());
+                if (cmp != 0) return cmp;
+                cmp = Integer.compare(e1.getGrade(), e2.getGrade());
+                if (cmp != 0) return cmp;
+                return e1.getNom().compareTo(e2.getNom());
+            }
+        });
     }
 
     @Override
     public List<Employe> rechercherParDepartement(String nomDepartement) {
         List<Employe> result = new ArrayList<>();
         for (Employe e : employes) {
-            if (e.getNomDepartement().equalsIgnoreCase(nomDepartement)) {
+            if (e.getNomDepartement().equals(nomDepartement)) {
                 result.add(e);
             }
         }

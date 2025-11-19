@@ -42,19 +42,36 @@ public class DepartementHashSet implements IDepartement<Departement> {
 
     @Override
     public void trierDepartementsParId() {
-        List<Departement> liste = new ArrayList<>(departements);
-        liste.sort(Comparator.comparingInt(Departement::getId));
-        liste.forEach(System.out::println);
+        List<Departement> list = new ArrayList<>(departements);
+        Collections.sort(list, new Comparator<Departement>() {
+            @Override
+            public int compare(Departement d1, Departement d2) {
+                return Integer.compare(d1.getId(), d2.getId());
+            }
+        });
+
+        for (Departement d : list) {
+            System.out.println(d);
+        }
     }
 
     @Override
     public void trierDepartementsParNomEtNombreEmployes() {
-        List<Departement> liste = new ArrayList<>(departements);
-        liste.sort(Comparator
-                .comparing(Departement::getNomDepartement)
-                .thenComparingInt(Departement::getNombreEmployes));
-        liste.forEach(System.out::println);
+        List<Departement> list = new ArrayList<>(departements);
+        Collections.sort(list, new Comparator<Departement>() {
+            @Override
+            public int compare(Departement d1, Departement d2) {
+                int cmp = d1.getNomDepartement().compareTo(d2.getNomDepartement());
+                if (cmp != 0) return cmp;
+                return Integer.compare(d1.getNombreEmployes(), d2.getNombreEmployes());
+            }
+        });
+
+        for (Departement d : list) {
+            System.out.println(d);
+        }
     }
+
 }
 
 

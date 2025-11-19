@@ -46,6 +46,10 @@ public class Departement {
         }
         return false;
     }
+    @Override
+    public int hashCode() {
+        return id * 31 + nomDepartement.toLowerCase().hashCode();
+    }
 
     @Override
     public String toString() {

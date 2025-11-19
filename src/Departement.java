@@ -11,7 +11,6 @@ public class Departement {
         this.nombreEmployes = nombreEmployes;
     }
 
-    // Getters et Setters
     public int getId() {
         return id;
     }
